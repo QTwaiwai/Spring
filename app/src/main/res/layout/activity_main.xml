@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Activity.MainActivity">
 
     <ImageView
         android:id="@+id/im_main_background"
@@ -30,7 +30,7 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:hint="账号"
-            android:inputType="number"
+            android:inputType="textVisiblePassword"
             android:lines="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -49,7 +49,7 @@
             android:digits="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVW
 XYZ?!=+-_.,"
             android:hint="密码"
-            android:inputType="textVisiblePassword"
+            android:inputType="textPassword"
             android:lines="1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -57,7 +57,7 @@ XYZ?!=+-_.,"
 
     <Button
         android:id="@+id/btn_main_login"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:text="登录"
         app:layout_constraintTop_toBottomOf="@+id/cb_main_remember"
@@ -68,8 +68,9 @@ XYZ?!=+-_.,"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="注册"
-        app:layout_constraintTop_toBottomOf="@+id/cb_main_remember"
-        app:layout_constraintStart_toStartOf="@id/til_main_password"/>
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/til_main_password"
+        app:layout_constraintEnd_toEndOf="@id/til_main_password"/>
 
     <CheckBox
         android:id="@+id/cb_main_remember"
