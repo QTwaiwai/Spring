@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/iv_musicrun_bg"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
+        android:layout_marginTop="-250dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_musicrun_songname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="歌曲名"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/iv_musicrun_bg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_musicrun_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00:00"
+        app:layout_constraintStart_toStartOf="@+id/iv_musicrun_bg"
+        app:layout_constraintTop_toBottomOf="@+id/tv_musicrun_songname"/>
+
+    <SeekBar
+        android:id="@+id/sb_musicrun_sb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/tv_musicrun_total"
+        app:layout_constraintStart_toEndOf="@+id/tv_musicrun_progress"
+        app:layout_constraintTop_toBottomOf="@+id/tv_musicrun_songname"/>
+
+    <TextView
+        android:id="@+id/tv_musicrun_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00:00"
+        app:layout_constraintEnd_toEndOf="@+id/iv_musicrun_bg"
+        app:layout_constraintTop_toBottomOf="@+id/tv_musicrun_songname"/>
+
+
+    <Button
+        android:id="@+id/btn_musicrun_play"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:text="播放音乐"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_musicrun_progress"/>
+
+
+    <Button
+        android:id="@+id/btn_musicrun_pause"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:text="暂停播放"
+        app:layout_constraintStart_toEndOf="@+id/btn_musicrun_play"
+        app:layout_constraintTop_toBottomOf="@+id/tv_musicrun_progress"/>
+
+    <Button
+        android:id="@+id/btn_musicrun_continueplay"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:text="继续播放"
+        app:layout_constraintStart_toEndOf="@+id/btn_musicrun_pause"
+        app:layout_constraintTop_toBottomOf="@+id/tv_musicrun_progress"/>
+
+    <Button
+        android:id="@+id/btn_musicrun_exit"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:text="退出"
+        app:layout_constraintStart_toEndOf="@+id/btn_musicrun_continueplay"
+        app:layout_constraintTop_toBottomOf="@+id/tv_musicrun_progress"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
