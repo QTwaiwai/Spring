@@ -2,4 +2,5 @@
     <string name="app_name">Spring</string>
     <string name="title_activity_register">Register</string>
     <string name="title_activity_music" />
+    <string name="title_activity_musicrun" />
 </resources>

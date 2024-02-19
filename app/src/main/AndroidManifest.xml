@@ -29,13 +29,21 @@
             android:theme="@style/Theme.Spring">
 
         </activity>
+
         <activity
             android:name=".Activity.MusicActivity"
             android:exported="true"
             android:label="@string/title_activity_music"
             android:theme="@style/Theme.Spring">
-
         </activity>
+
+        <activity
+            android:name=".Activity.MusicRunActivity"
+            android:exported="true"
+            android:label="@string/title_activity_musicrun"
+            android:theme="@style/Theme.Spring">
+        </activity>
+
         <activity
             android:name=".Activity.MainActivity"
             android:exported="true">

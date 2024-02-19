@@ -22,6 +22,7 @@ import static java.lang.Integer.parseInt;
 
 import com.example.spring.MusicService;
 import com.example.spring.R;
+import com.example.spring.frag1;
 
 public class MusicRunActivity extends AppCompatActivity implements View.OnClickListener{
     //进度条
