@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
     private CheckBox mCbRemember;
     SharedPreferences loginPreference;
     private Handler mHandler;
-    private final String mPostUrlLogin = "https://www.wanandroid.com/user/login";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         sure.put("username",mEtUesrName.getText().toString());
         sure.put("password",mEtPassWord.getText().toString());
         sure.put("repassword",mEtPassWord.getText().toString());
+        String mPostUrlLogin = "https://www.wanandroid.com/user/login";
         MyNetRequest sureInformation=new MyNetRequest(mPostUrlLogin,sure,mHandler);
     }
     private class MyHandler extends Handler {
