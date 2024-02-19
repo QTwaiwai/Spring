@@ -57,9 +57,12 @@ public class MusicRunActivity extends AppCompatActivity{
         conn = new MyServiceConn();//创建服务连接对象
         bindService(intent2, conn, BIND_AUTO_CREATE);//绑定服务
         ImageView iv_music=(ImageView) findViewById(R.id.iv_musicrun_bg);
+        ImageView iv_musicbg=(ImageView) findViewById(R.id.iv_musicrunbg);
         String position=intent1.getStringExtra("position");
         i=parseInt(position);
         iv_music.setImageResource(Frag1.icons[i]);
+        iv_musicbg.setImageResource(Frag1.icons[i]);
+        iv_musicbg.setAlpha(0.5f);
     }
 
 
