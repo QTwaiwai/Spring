@@ -35,6 +35,7 @@
             android:exported="true"
             android:label="@string/title_activity_music"
             android:theme="@style/Theme.Spring">
+
         </activity>
 
         <activity
@@ -42,6 +43,7 @@
             android:exported="true"
             android:label="@string/title_activity_musicrun"
             android:theme="@style/Theme.Spring">
+
         </activity>
 
         <activity

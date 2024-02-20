@@ -21,10 +21,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="-180dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_main_username"
             android:layout_width="250dp"
@@ -38,10 +39,11 @@
         android:id="@+id/til_main_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:passwordToggleEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/til_main_username">
+        app:layout_constraintTop_toBottomOf="@+id/til_main_username"
+        app:passwordToggleEnabled="true">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_main_password"
             android:layout_width="250dp"
@@ -59,10 +61,10 @@ XYZ?!=+-_.,"
         android:id="@+id/btn_main_login"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:text="登录"
         android:background="@drawable/btn_shape"
-        app:layout_constraintTop_toBottomOf="@+id/cb_main_remember"
-        app:layout_constraintEnd_toEndOf="@+id/til_main_password"/>
+        android:text="登录"
+        app:layout_constraintEnd_toEndOf="@+id/til_main_password"
+        app:layout_constraintTop_toBottomOf="@+id/cb_main_remember" />
 
     <Button
         android:id="@+id/btn_main_register"
@@ -70,8 +72,8 @@ XYZ?!=+-_.,"
         android:layout_height="wrap_content"
         android:text="注册"
         android:textColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@+id/til_main_password"
-        app:layout_constraintEnd_toEndOf="@id/til_main_password"/>
+        app:layout_constraintEnd_toEndOf="@id/til_main_password"
+        app:layout_constraintTop_toBottomOf="@+id/til_main_password" />
 
     <CheckBox
         android:id="@+id/cb_main_remember"
@@ -79,13 +81,8 @@ XYZ?!=+-_.,"
         android:layout_height="wrap_content"
         android:text="记住密码"
 
-        app:layout_constraintTop_toBottomOf="@+id/til_main_password"
-        app:layout_constraintStart_toStartOf="@+id/til_main_password"/>
-
-
-
-
-
+        app:layout_constraintStart_toStartOf="@+id/til_main_password"
+        app:layout_constraintTop_toBottomOf="@+id/til_main_password" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

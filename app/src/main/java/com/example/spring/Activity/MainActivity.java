@@ -42,17 +42,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void Login() {
+        //点击登录按钮，进行登录
         mBtnLogin.setOnClickListener(v -> login());
     }
-
+    //登录
     private void login() {
-        HashMap<String,String> sure=new HashMap<>();
-        sure.put("username",mEtUesrName.getText().toString());
-        sure.put("password",mEtPassWord.getText().toString());
-        sure.put("repassword",mEtPassWord.getText().toString());
+        HashMap<String, String> sure = new HashMap<>();
+        sure.put("username", mEtUesrName.getText().toString());
+        sure.put("password", mEtPassWord.getText().toString());
+        sure.put("repassword", mEtPassWord.getText().toString());
         String mPostUrlLogin = "https://www.wanandroid.com/user/login";
-        MyNetRequest sureInformation=new MyNetRequest(mPostUrlLogin,sure,mHandler);
+        MyNetRequest sureInformation = new MyNetRequest(mPostUrlLogin, sure, mHandler);
     }
+
     private class MyHandler extends Handler {
         @Override
         public void handleMessage(@NonNull Message msg) {
@@ -61,16 +63,14 @@ public class MainActivity extends AppCompatActivity {
             judge(decodeJson(responseData));
         }
     }
-
-    private void judge  (BannerData bannerData) {
-        if(bannerData.errorCode==-1){
+    //登录判断，还不知道条件。。。
+    private void judge(BannerData bannerData) {
+        if (bannerData.errorCode == -1) {
             loginSuccess();
-        }
-        else {
+        } else {
             loginFailure();
         }
     }
-
 
 
     //登录失败
@@ -78,21 +78,22 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, "账号或者密码好像输错了 :(",
                 Toast.LENGTH_SHORT).show();
     }
+
     //登录成功并按要求保存账号和密码
     private void loginSuccess() {
-        SharedPreferences.Editor registrar=loginPreference.edit();
-        if(mCbRemember.isChecked()){
-            registrar.putString("username",mEtUesrName.getText().toString());
-            registrar.putString("password",mEtPassWord.getText().toString());
-            registrar.putBoolean("check",mCbRemember.isChecked());
-        }else{
+        SharedPreferences.Editor registrar = loginPreference.edit();
+        if (mCbRemember.isChecked()) {
+            registrar.putString("username", mEtUesrName.getText().toString());
+            registrar.putString("password", mEtPassWord.getText().toString());
+            registrar.putBoolean("check", mCbRemember.isChecked());
+        } else {
             registrar.remove("username");
             registrar.remove("password");
             registrar.remove("check");
         }
         registrar.apply();
         Toast.makeText(this, "登陆成功!", Toast.LENGTH_SHORT).show();
-        Intent intent=new Intent(MainActivity.this, MusicActivity.class);
+        Intent intent = new Intent(MainActivity.this, MusicActivity.class);
         startActivity(intent);
     }
 
@@ -106,14 +107,15 @@ public class MainActivity extends AppCompatActivity {
             bannerData.errorCode = jsonObject.getInt("errorCode");
             bannerData.errorMsg = jsonObject.getString("errorMsg");
 // data是⼀个对象集合
-        }catch (Exception e){
-            Log.w("lx","(JsonActivity.java:59)-->>",e);
+        } catch (Exception e) {
+            Log.w("lx", "(JsonActivity.java:59)-->>", e);
         }
         return bannerData;
     }
 
 
     private void Register() {
+        //点击注册按钮，进行注册
         mBtnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -122,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
+    //初始化
     private void initial() {
         mEtUesrName = findViewById(R.id.et_main_username);
         mEtPassWord = findViewById(R.id.et_main_password);
@@ -130,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
         mBtnRegister = findViewById(R.id.btn_main_register);
         mBtnRegister.getBackground().setAlpha(0);
         mCbRemember = findViewById(R.id.cb_main_remember);
-        mHandler=new MyHandler();
+        mHandler = new MyHandler();
         //建立一个记住密码的储存，并且按要求读取
         loginPreference = getSharedPreferences("remember", MODE_PRIVATE);
         if (loginPreference.getBoolean("check", false)) {

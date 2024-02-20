@@ -18,47 +18,55 @@ import com.example.spring.Activity.MusicRunActivity;
 public class Frag1 extends Fragment {
     private View view;
     //创建歌曲的String数组和歌手图片的int数组
-    public String[] song={"不眠之夜","孤雏"};
-    public static String[] singer={"张杰","无名"};
-    public static int[] icons= new int[]{R.drawable.music0, R.drawable.music1};
+    public String[] song = {"不眠之夜", "孤雏"};
+    public static String[] singer = {"张杰", "无名"};
+    public static int[] icons = new int[]{R.drawable.music0, R.drawable.music1};
+
     @Override
-    public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        view=inflater.inflate(R.layout.music_list,container,false);
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.music_list, container, false);
         //创建listView列表并且绑定控件
-        ListView listView=view.findViewById(R.id.lv);
+        ListView listView = view.findViewById(R.id.lv);
         //实例化一个适配器
-        MyBaseAdapter adapter=new MyBaseAdapter();
+        MyBaseAdapter adapter = new MyBaseAdapter();
         //列表设置适配器
         listView.setAdapter(adapter);
         //列表元素的点击监听器
         listView.setOnItemClickListener((parent, view, position, id) -> {
-            //创建Intent对象，参数就是从frag1跳转到MusicActivity
-            Intent intent=new Intent(Frag1.this.getContext(), MusicRunActivity.class);
+            //从frag1跳转到MusicActivity
+            Intent intent = new Intent(Frag1.this.getContext(), MusicRunActivity.class);
             //将歌曲名和歌曲的下标存入Intent对象
-            intent.putExtra("song",song[position]);
-            intent.putExtra("singer",singer[position]);
-            intent.putExtra("position",String.valueOf(position));
-            //开始跳转
+            intent.putExtra("song", song[position]);
+            intent.putExtra("singer", singer[position]);
+            intent.putExtra("position", String.valueOf(position));
             startActivity(intent);
         });
         return view;
     }
-    //这里是创建一个自定义适配器，可以作为模板
-    class MyBaseAdapter extends BaseAdapter{
+
+    class MyBaseAdapter extends BaseAdapter {
         @Override
-        public int getCount(){return  song.length;}
-        @Override
-        public Object getItem(int i){return song[i];}
-        @Override
-        public long getItemId(int i){return i;}
+        public int getCount() {
+            return song.length;
+        }
 
         @Override
-        public View getView(int i ,View convertView, ViewGroup parent) {
+        public Object getItem(int i) {
+            return song[i];
+        }
+
+        @Override
+        public long getItemId(int i) {
+            return i;
+        }
+
+        @Override
+        public View getView(int i, View convertView, ViewGroup parent) {
             //绑定好VIew，然后绑定控件
-            @SuppressLint("ViewHolder") View view=View.inflate(Frag1.this.getContext(),R.layout.lv_musicinformation,null);
-            TextView songname=view.findViewById(R.id.lv_songname);
-            TextView singername=view.findViewById(R.id.lv_singername);
-            ImageView iv=view.findViewById(R.id.lv_bg);
+            @SuppressLint("ViewHolder") View view = View.inflate(Frag1.this.getContext(), R.layout.lv_musicinformation, null);
+            TextView songname = view.findViewById(R.id.lv_songname);
+            TextView singername = view.findViewById(R.id.lv_singername);
+            ImageView iv = view.findViewById(R.id.lv_bg);
             //设置控件显示的内容，就是获取的歌曲名和歌手图片
             songname.setText(song[i]);
             singername.setText(singer[i]);

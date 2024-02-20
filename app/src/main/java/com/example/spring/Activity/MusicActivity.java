@@ -14,19 +14,22 @@ public class MusicActivity extends AppCompatActivity {
     private ImageView iv;
     private FragmentManager fm;
     private FragmentTransaction ft;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music);
         inital();
-        fm=getSupportFragmentManager();
-        ft=fm.beginTransaction();
-        ft.replace(R.id.fg_musiclist,new Frag1());
+        //与Frag1绑定
+        fm = getSupportFragmentManager();
+        ft = fm.beginTransaction();
+        ft.replace(R.id.fg_musiclist, new Frag1());
         ft.commit();
     }
 
-    private void inital(){
-        iv=findViewById(R.id.iv_music_bg);
+    //初始化
+    private void inital() {
+        iv = findViewById(R.id.iv_music_bg);
         iv.setAlpha(0.5f);
     }
 }

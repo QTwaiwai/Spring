@@ -6,7 +6,8 @@ public class BannerData {
     List<DetailData> data;
     public int errorCode;
     public String errorMsg;
-    static class DetailData{
+
+    static class DetailData {
         /*"       {\n" +
                 "             \"category\":\"源码\",\n " +
                 "             \"icon\":\"\",\n" +
