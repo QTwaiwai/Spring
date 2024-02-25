@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private CheckBox mCbRemember;
     SharedPreferences loginPreference;
     private Handler mHandler;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,11 @@ public class MainActivity extends AppCompatActivity {
         initial();
         Register();
         Login();
+        intent=getIntent();
+        if(intent!=null){
+            mEtUesrName.setText(intent.getStringExtra("username"));
+            mEtPassWord.setText(intent.getStringExtra("password"));
+        }
     }
 
     private void Login() {
@@ -48,6 +54,10 @@ public class MainActivity extends AppCompatActivity {
     //登录
     private void login() {
         HashMap<String, String> sure = new HashMap<>();
+        if(intent!=null){
+            mEtUesrName.setText(intent.getStringExtra("username"));
+            mEtPassWord.setText(intent.getStringExtra("password"));
+        }
         sure.put("username", mEtUesrName.getText().toString());
         sure.put("password", mEtPassWord.getText().toString());
         sure.put("repassword", mEtPassWord.getText().toString());
@@ -65,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
     }
     //登录判断，还不知道条件。。。
     private void judge(BannerData bannerData) {
-        if (bannerData.errorCode == -1) {
+        if (bannerData.errorCode == 0) {
             loginSuccess();
         } else {
             loginFailure();

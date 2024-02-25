@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="歌曲名"
-        android:textSize="20sp"
+        android:textSize="50sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_musicrun_bg" />
@@ -35,16 +35,16 @@
         android:id="@+id/btn_musicrun_play"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        android:text="播放音乐"
+        android:layout_marginStart="32dp"
+        android:text="播放"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_musicrun_songname" />
-
 
     <Button
         android:id="@+id/btn_musicrun_pause"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        android:text="暂停播放"
+        android:text="暂停"
         app:layout_constraintStart_toEndOf="@+id/btn_musicrun_play"
         app:layout_constraintTop_toBottomOf="@+id/tv_musicrun_songname" />
 
@@ -62,7 +62,23 @@
         android:layout_height="40dp"
         android:text="退出"
         app:layout_constraintStart_toEndOf="@+id/btn_musicrun_continueplay"
-        app:layout_constraintTop_toBottomOf="@+id/tv_musicrun_songname" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_musicrun_songname"/>
+
+    <Button
+        android:id="@+id/btn_musicrun_lastone"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:text="上一首"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_musicrun_play" />
+    <Button
+        android:id="@+id/btn_musicrun_nextone"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:text="下一首"
+        app:layout_constraintStart_toEndOf="@+id/btn_musicrun_lastone"
+        app:layout_constraintTop_toBottomOf="@+id/btn_musicrun_exit"  />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -18,7 +18,7 @@ import com.example.spring.Activity.MusicRunActivity;
 public class Frag1 extends Fragment {
     private View view;
     //创建歌曲的String数组和歌手图片的int数组
-    public String[] song = {"不眠之夜", "孤雏"};
+    public static String[] song = {"不眠之夜", "孤雏"};
     public static String[] singer = {"张杰", "无名"};
     public static int[] icons = new int[]{R.drawable.music0, R.drawable.music1};
 

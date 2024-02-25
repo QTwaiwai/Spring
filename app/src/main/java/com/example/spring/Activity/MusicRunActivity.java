@@ -1,5 +1,7 @@
 package com.example.spring.Activity;
 
+import static com.example.spring.Frag1.song;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ComponentName;
@@ -22,11 +24,16 @@ import com.example.spring.MusicService;
 import com.example.spring.R;
 
 public class MusicRunActivity extends AppCompatActivity {
-    int i;
+    int i,change=0;
+
+    ImageView iv_music ;
+    ImageView iv_musicbg;
     private Button play;
     private Button pause;
     private Button continueplay;
     private Button exit;
+    private Button last;
+    private Button next;
     private TextView mTvSongName;
     private MusicService.MusicControl musicControl;
     private String name;
@@ -51,6 +58,8 @@ public class MusicRunActivity extends AppCompatActivity {
         pause = findViewById(R.id.btn_musicrun_pause);
         continueplay = findViewById(R.id.btn_musicrun_continueplay);
         exit = findViewById(R.id.btn_musicrun_exit);
+        last=findViewById(R.id.btn_musicrun_lastone);
+        next=findViewById(R.id.btn_musicrun_nextone);
         name = intent1.getStringExtra("song");
         mTvSongName.setText(name);
         //从当前的Activity跳转到Service
@@ -58,8 +67,8 @@ public class MusicRunActivity extends AppCompatActivity {
         conn = new MyServiceConn();//创建服务连接对象
         bindService(intent2, conn, BIND_AUTO_CREATE);//绑定服务
         //传入服务信息
-        ImageView iv_music = (ImageView) findViewById(R.id.iv_musicrun_bg);
-        ImageView iv_musicbg = (ImageView) findViewById(R.id.iv_musicrunbg);
+        iv_music = (ImageView) findViewById(R.id.iv_musicrun_bg);
+        iv_musicbg = (ImageView) findViewById(R.id.iv_musicrunbg);
         String position = intent1.getStringExtra("position");
         i = parseInt(position);
         iv_music.setImageResource(Frag1.icons[i]);
@@ -114,6 +123,44 @@ public class MusicRunActivity extends AppCompatActivity {
                 unbind(isUnbind);
                 isUnbind = true;
                 finish();
+            }
+        });
+        last.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if((i+change)<1) {
+                    change= song.length-1-i;
+                    musicControl.play(i+change);
+                    iv_music.setImageResource(Frag1.icons[i+change]);
+                    mTvSongName.setText(song[i+change]);
+                    pause.setVisibility(View.VISIBLE);
+                }
+                else {
+                    change--;
+                    iv_music.setImageResource(Frag1.icons[i+change]);
+                    mTvSongName.setText(song[i+change]);
+                    musicControl.play(i+change);
+                    pause.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if((i+change)== song.length-1) {
+                    change= -1;
+                    musicControl.play(i-change);
+                    iv_music.setImageResource(Frag1.icons[i+change]);
+                    mTvSongName.setText(song[i+change]);
+                    pause.setVisibility(View.VISIBLE);
+                }
+                else {
+                    change++;
+                    iv_music.setImageResource(Frag1.icons[i+change]);
+                    mTvSongName.setText(song[i+change]);
+                    musicControl.play(i+change);
+                    pause.setVisibility(View.VISIBLE);
+                }
             }
         });
     }

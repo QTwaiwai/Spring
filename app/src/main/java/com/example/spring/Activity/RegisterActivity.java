@@ -1,5 +1,6 @@
 package com.example.spring.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -66,7 +67,10 @@ public class RegisterActivity extends AppCompatActivity {
                     params.put("password", mEtPassword.getText().toString());
                     params.put("repassword", mEtPassword.getText().toString());
                     new MyNetRequest(mPostUrlRegister, params, new Handler());
-                    finish();
+                    Intent intent=new Intent(RegisterActivity.this,MainActivity.class);
+                    intent.putExtra("username",mEtUsername.getText().toString());
+                    intent.putExtra("password",mEtPassword.getText().toString());
+                    startActivity(intent);
                 }
             }
         });
