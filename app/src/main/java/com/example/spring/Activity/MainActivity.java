@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
             judge(decodeJson(responseData));
         }
     }
-    //登录判断，还不知道条件。。。
+    //登录判断
     private void judge(BannerData bannerData) {
         if (bannerData.errorCode == 0) {
             loginSuccess();
